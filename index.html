@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAISON NOIRE — Timeless Furniture</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{colors:{brand:{bg:'#1a1410',bg2:'#231c15',card:'#2a2118',accent:'#c8a882',accentLight:'#dcc5a5',text:'#f0e6d8',muted:'#a89880',border:'rgba(200,168,130,0.12)'}},fontFamily:{serif:['Cormorant Garamond','serif'],sans:['Inter','sans-serif']}}}}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1410;color:#f0e6d8;font-family:'Inter',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#1a1410}::-webkit-scrollbar-thumb{background:#3d3228;border-radius:3px}::-webkit-scrollbar-thumb:hover{background:#c8a882}
+.noise-overlay{position:fixed;inset:0;z-index:9999;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4}
+.grain{position:relative;overflow:hidden}.grain::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.08'/%3E%3C/svg%3E");mix-blend-mode:overlay}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes lineGrow{from{width:0}to{width:80px}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes breathe{0%,100%{opacity:.3}50%{opacity:.6}}
+@keyframes modalIn{from{opacity:0;transform:scale(.94) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes overlayIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes adminSlideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.anim-fade-up{animation:fadeInUp .9s ease-out forwards}.anim-fade{animation:fadeIn 1s ease-out forwards}
+.delay-1{animation-delay:.15s;opacity:0}.delay-2{animation-delay:.3s;opacity:0}.delay-3{animation-delay:.45s;opacity:0}.delay-4{animation-delay:.6s;opacity:0}.delay-5{animation-delay:.75s;opacity:0}.delay-6{animation-delay:.9s;opacity:0}
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.92);transition:all .9s cubic-bezier(.25,.46,.45,.94)}.reveal-scale.visible{opacity:1;transform:scale(1)}
+.hero-image{transition:transform .1s linear}
+.scroll-container{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.scroll-container::-webkit-scrollbar{display:none}.scroll-card{scroll-snap-align:start;flex-shrink:0}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,#c8a882,transparent)}.gold-line-left{height:1px;background:linear-gradient(90deg,#c8a882,transparent)}.gold-line-animated{height:1px;background:#c8a882;animation:lineGrow 1.2s ease-out forwards;width:0}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent 0%,rgba(200,168,130,.2) 20%,rgba(200,168,130,.2) 80%,transparent 100%)}
+.img-hover{transition:transform .7s ease,filter .7s ease}.img-hover:hover{transform:scale(1.04);filter:brightness(1.1)}
+.card-glow{position:relative;overflow:hidden;transition:border-color .4s ease,background-color .4s ease}.card-glow::before{content:'';position:absolute;top:50%;left:50%;width:200%;height:200%;background:radial-gradient(circle,rgba(200,168,130,.06) 0%,transparent 60%);transform:translate(-50%,-50%);opacity:0;transition:opacity .5s ease;pointer-events:none}.card-glow:hover::before{opacity:1}.card-glow:hover{border-color:rgba(200,168,130,.25)}
+.marquee-track{animation:marquee 40s linear infinite}.marquee-track:hover{animation-play-state:paused}
+.nav-glass{background:rgba(26,20,16,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.cursor-dot{width:8px;height:8px;background:#c8a882;border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:transform .15s ease,opacity .3s ease;mix-blend-mode:difference}
+.cursor-ring{width:36px;height:36px;border:1px solid rgba(200,168,130,.4);border-radius:50%;position:fixed;pointer-events:none;z-index:9997;transition:transform .3s ease,width .3s ease,height .3s ease,border-color .3s ease}
+.modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(10,8,6,.85);backdrop-filter:blur(8px);animation:overlayIn .3s ease-out forwards;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.modal-content{background:#231c15;border:1px solid rgba(200,168,130,.15);max-height:90vh;overflow-y:auto;width:100%;animation:modalIn .4s cubic-bezier(.25,.46,.45,.94) forwards;border-radius:.5rem}
+.modal-content::-webkit-scrollbar{width:4px}.modal-content::-webkit-scrollbar-thumb{background:#3d3228;border-radius:2px}
+.admin-input{width:100%;padding:.75rem 1rem;background:#1a1410;border:1px solid rgba(200,168,130,.12);color:#f0e6d8;font-family:'Inter',sans-serif;font-size:.875rem;font-weight:300;transition:border-color .3s ease;outline:none;border-radius:.25rem}
+.admin-input:focus{border-color:rgba(200,168,130,.4)}.admin-input::placeholder{color:rgba(168,152,128,.4)}
+textarea.admin-input{resize:vertical;min-height:80px}
+.admin-btn{padding:.75rem 1.5rem;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .3s ease;border:none;font-family:'Inter',sans-serif;border-radius:.25rem}
+.admin-btn-primary{background:#c8a882;color:#1a1410}.admin-btn-primary:hover{background:#dcc5a5}
+.admin-btn-outline{background:transparent;border:1px solid rgba(200,168,130,.2);color:#f0e6d8}.admin-btn-outline:hover{border-color:rgba(200,168,130,.4);background:rgba(200,168,130,.05)}
+.admin-btn-danger{background:transparent;border:1px solid rgba(220,80,80,.3);color:#dc5050}.admin-btn-danger:hover{background:rgba(220,80,80,.1);border-color:rgba(220,80,80,.5)}
+.upload-zone{border:2px dashed rgba(200,168,130,.2);border-radius:.5rem;padding:1.5rem;text-align:center;cursor:pointer;transition:all .3s ease;position:relative;overflow:hidden}
+.upload-zone:hover,.upload-zone.dragover{border-color:rgba(200,168,130,.4);background:rgba(200,168,130,.03)}
+.upload-zone img{max-height:160px;object-fit:contain;border-radius:.25rem}
+.spinner{width:18px;height:18px;border:2px solid rgba(200,168,130,.2);border-top-color:#c8a882;border-radius:50%;animation:spin .6s linear infinite;display:inline-block;vertical-align:middle}
+.toast-container{position:fixed;bottom:2rem;right:2rem;z-index:10000;display:flex;flex-direction:column;gap:.5rem;pointer-events:none}
+.toast-item{background:#2a2118;border:1px solid rgba(200,168,130,.3);padding:.875rem 1.25rem;border-radius:.5rem;animation:slideUp .4s ease-out forwards;display:flex;align-items:center;gap:.75rem;min-width:280px;pointer-events:auto}
+.toast-item.success{border-left:3px solid #6bba75}.toast-item.error{border-left:3px solid #dc5050}.toast-item.info{border-left:3px solid #c8a882}
+.mobile-menu{position:fixed;inset:0;z-index:100;background:rgba(26,20,16,.97);backdrop-filter:blur(20px);transform:translateX(100%);transition:transform .5s cubic-bezier(.25,.46,.45,.94)}.mobile-menu.open{transform:translateX(0)}
+.admin-badge{display:none;position:fixed;bottom:1.5rem;left:1.5rem;z-index:8000;background:#2a2118;border:1px solid rgba(200,168,130,.2);padding:.5rem .875rem;border-radius:999px;cursor:pointer;transition:all .3s ease;align-items:center;gap:.5rem}
+.admin-badge.visible{display:flex}.admin-badge:hover{border-color:rgba(200,168,130,.4);background:#332a20}
+.skeleton{background:linear-gradient(90deg,#2a2118 25%,#332a20 50%,#2a2118 75%);background-size:200% 100%;animation:shimmer 1.5s ease-in-out infinite;border-radius:.25rem}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+/* Full Admin Panel */
+.admin-panel{position:fixed;inset:0;z-index:9500;background:#1a1410;animation:adminSlideIn .4s cubic-bezier(.25,.46,.45,.94) forwards;display:flex;overflow:hidden}
+.admin-sidebar{width:260px;background:#151110;border-right:1px solid rgba(200,168,130,.08);display:flex;flex-direction:column;flex-shrink:0;height:100vh;overflow-y:auto}
+.admin-sidebar::-webkit-scrollbar{width:3px}.admin-sidebar::-webkit-scrollbar-thumb{background:#3d3228;border-radius:2px}
+.admin-nav-item{display:flex;align-items:center;gap:.75rem;padding:.75rem 1.25rem;font-size:.75rem;letter-spacing:.05em;color:#a89880;cursor:pointer;transition:all .2s ease;border-left:2px solid transparent}
+.admin-nav-item:hover{color:#f0e6d8;background:rgba(200,168,130,.03)}
+.admin-nav-item.active{color:#c8a882;border-left-color:#c8a882;background:rgba(200,168,130,.05)}
+.admin-main{flex:1;overflow-y:auto;height:100vh;padding:2rem 2.5rem}
+.admin-main::-webkit-scrollbar{width:4px}.admin-main::-webkit-scrollbar-thumb{background:#3d3228;border-radius:2px}
+.field-group{margin-bottom:1.25rem}
+.field-label{display:block;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:#a89880;margin-bottom:.5rem;font-weight:500}
+.field-hint{font-size:.65rem;color:rgba(168,152,128,.4);margin-top:.25rem}
+.list-item{background:#1a1410;border:1px solid rgba(200,168,130,.08);border-radius:.375rem;padding:1rem;margin-bottom:.5rem;transition:border-color .2s ease}
+.list-item:hover{border-color:rgba(200,168,130,.2)}
+.line-clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+</style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div class="cursor-dot hidden lg:block" id="cursorDot"></div>
+<div class="cursor-ring hidden lg:block" id="cursorRing"></div>
+<div class="toast-container" id="toastContainer"></div>
+<div class="mobile-menu" id="mobileMenu"><div class="flex flex-col justify-center items-center h-full space-y-8"><a href="#story" class="font-serif text-3xl text-brand-text hover:text-brand-accent transition-colors" onclick="closeMobileMenu()">Our Story</a><a href="#collections" class="font-serif text-3xl text-brand-text hover:text-brand-accent transition-colors" onclick="closeMobileMenu()">Collections</a><a href="#craft" class="font-serif text-3xl text-brand-text hover:text-brand-accent transition-colors" onclick="closeMobileMenu()">Craftsmanship</a><a href="#gallery" class="font-serif text-3xl text-brand-text hover:text-brand-accent transition-colors" onclick="closeMobileMenu()">Gallery</a><a href="#contact" class="font-serif text-3xl text-brand-text hover:text-brand-accent transition-colors" onclick="closeMobileMenu()">Contact</a><div class="gold-line w-16 mt-4"></div><button onclick="closeMobileMenu()" class="absolute top-8 right-8 text-brand-muted hover:text-brand-accent transition-colors"><iconify-icon icon="lucide:x" width="28"></iconify-icon></button></div></div>
+
+<!-- NAV -->
+<nav class="nav-glass fixed top-0 left-0 right-0 z-50 border-b border-brand-border">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<a href="#" class="flex items-center gap-3 group"><div class="w-8 h-8 border border-brand-accent/50 rounded-sm flex items-center justify-center group-hover:border-brand-accent transition-colors"><span class="font-serif text-brand-accent text-sm font-medium">M</span></div><span class="font-serif text-lg tracking-widest uppercase text-brand-text">Maison Noire</span></a>
+<div class="hidden md:flex items-center gap-8"><a href="#story" class="text-xs font-medium tracking-widest uppercase text-brand-muted hover:text-brand-accent transition-colors">Story</a><a href="#collections" class="text-xs font-medium tracking-widest uppercase text-brand-muted hover:text-brand-accent transition-colors">Collections</a><a href="#craft" class="text-xs font-medium tracking-widest uppercase text-brand-muted hover:text-brand-accent transition-colors">Craft</a><a href="#gallery" class="text-xs font-medium tracking-widest uppercase text-brand-muted hover:text-brand-accent transition-colors">Gallery</a><a href="#contact" class="text-xs font-medium tracking-widest uppercase text-brand-muted hover:text-brand-accent transition-colors">Contact</a></div>
+<div class="flex items-center gap-4"><button class="text-brand-muted/40 hover:text-brand-accent/60 transition-colors" onclick="openAdminLogin()" title="Admin"><iconify-icon icon="lucide:shield" width="16"></iconify-icon></button><button class="hidden md:flex text-brand-muted hover:text-brand-accent transition-colors" id="searchBtn"><iconify-icon icon="lucide:search" width="18"></iconify-icon></button><button class="hidden md:flex text-brand-muted hover:text-brand-accent transition-colors relative" id="cartBtn"><iconify-icon icon="lucide:shopping-bag" width="18"></iconify-icon><span class="absolute -top-1 -right-1.5 w-3.5 h-3.5 bg-brand-accent text-brand-bg text-[9px] font-medium rounded-full flex items-center justify-center">0</span></button><button class="md:hidden text-brand-muted" onclick="openMobileMenu()"><iconify-icon icon="lucide:menu" width="22"></iconify-icon></button></div>
+</div></nav>
+<div class="admin-badge" id="adminBadge" onclick="openAdminPanel()"><iconify-icon icon="lucide:shield-check" width="14" class="text-brand-accent"></iconify-icon><span class="text-[10px] tracking-widest uppercase text-brand-accent">Admin</span></div>
+
+<!-- ====== DYNAMIC CONTENT CONTAINER ====== -->
+<div id="siteContent">
+<!-- HERO --><section class="relative min-h-screen flex items-end overflow-hidden" id="hero"><div class="absolute inset-0"><img id="heroImg" src="" alt="Hero" class="hero-image w-full h-full object-cover opacity-40" style="transform:scale(1.1)"><div class="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/60 to-transparent"></div><div class="absolute inset-0 bg-gradient-to-r from-brand-bg/80 to-transparent"></div></div><div class="absolute top-1/3 right-1/4 w-96 h-96 rounded-full bg-brand-accent/5 blur-3xl" style="animation:breathe 6s ease-in-out infinite"></div><div class="relative z-10 max-w-7xl mx-auto px-6 pb-24 pt-40 w-full"><div class="max-w-3xl"><div class="anim-fade delay-1 flex items-center gap-3 mb-8"><div class="gold-line-animated"></div><span id="heroLabel" class="text-[10px] font-medium tracking-[0.35em] uppercase text-brand-accent"></span></div><h1 id="heroTitle" class="font-serif text-5xl md:text-7xl lg:text-8xl font-light leading-[0.95] tracking-tight text-brand-text anim-fade-up delay-2"></h1><p id="heroSubtitle" class="mt-8 text-sm md:text-base font-light leading-relaxed text-brand-muted max-w-lg anim-fade-up delay-3"></p><div class="flex flex-wrap gap-4 mt-10 anim-fade-up delay-4"><a href="#collections" id="heroCta1" class="group inline-flex items-center gap-3 px-8 py-3.5 bg-brand-accent text-brand-bg text-xs font-medium tracking-widest uppercase hover:bg-brand-accentLight transition-all duration-300"></a><a href="#story" id="heroCta2" class="group inline-flex items-center gap-3 px-8 py-3.5 border border-brand-border text-brand-text text-xs font-medium tracking-widest uppercase hover:border-brand-accent/40 hover:bg-white/5 transition-all duration-300"></a></div></div><div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 anim-fade delay-6"><span class="text-[10px] tracking-[0.3em] uppercase text-brand-muted/50">Scroll</span><div class="w-px h-8 bg-gradient-to-b from-brand-accent/50 to-transparent"></div></div></div></section>
+<!-- MARQUEE --><div class="relative py-5 border-y border-brand-border overflow-hidden bg-brand-bg2"><div class="flex whitespace-nowrap marquee-track" style="width:max-content" id="marqueeTrack"></div></div>
+<!-- STORY --><section class="py-32 relative" id="story"><div class="absolute top-0 left-0 w-72 h-72 bg-brand-accent/3 rounded-full blur-3xl"></div><div class="max-w-7xl mx-auto px-6"><div class="reveal flex items-center gap-4 mb-6"><div class="gold-line-left w-20"></div><span class="text-[10px] font-medium tracking-[0.35em] uppercase text-brand-accent">Chapter One</span></div><h2 id="storyTitle" class="reveal font-serif text-4xl md:text-6xl font-light tracking-tight text-brand-text mb-6"></h2><div class="grid lg:grid-cols-2 gap-16 mt-16"><div class="reveal-left"><div class="grain relative aspect-[4/5] overflow-hidden"><img id="storyImg" src="" alt="" class="w-full h-full object-cover img-hover"><div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-brand-bg/90 to-transparent"><p id="storyImgQuote" class="font-serif text-sm italic text-brand-accentLight/80"></p></div></div></div><div class="reveal-right flex flex-col justify-center"><div id="storyParagraphs" class="space-y-6"></div><div id="storyStats" class="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-brand-border"></div></div></div></div></section>
+<div class="section-divider max-w-5xl mx-auto"></div>
+<!-- COLLECTIONS --><section class="py-32 relative" id="collections"><div class="max-w-7xl mx-auto px-6"><div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12"><div><div class="reveal flex items-center gap-4 mb-6"><div class="gold-line-left w-20"></div><span class="text-[10px] font-medium tracking-[0.35em] uppercase text-brand-accent">Chapter Two</span></div><h2 class="reveal font-serif text-4xl md:text-6xl font-light tracking-tight text-brand-text">The <span class="italic text-brand-accent">Collections</span></h2></div><div class="reveal flex gap-3"><button onclick="scrollCollection(-1)" class="w-11 h-11 border border-brand-border flex items-center justify-center text-brand-muted hover:text-brand-accent hover:border-brand-accent/30 transition-all"><iconify-icon icon="lucide:arrow-left" width="16"></iconify-icon></button><button onclick="scrollCollection(1)" class="w-11 h-11 border border-brand-border flex items-center justify-center text-brand-muted hover:text-brand-accent hover:border-brand-accent/30 transition-all"><iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon></button></div></div><div class="scroll-container flex gap-6 pb-4" id="collectionScroll"></div></div></section>
+<div class="section-divider max-w-5xl mx-auto"></div>
+<!-- CRAFT --><section class="py-32 relative" id="craft"><div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-accent/3 rounded-full blur-3xl"></div><div class="max-w-7xl mx-auto px-6"><div class="reveal flex items-center gap-4 mb-6"><div class="gold-line-left w-20"></div><span class="text-[10px] font-medium tracking-[0.35em] uppercase text-brand-accent">Chapter Three</span></div><h2 class="reveal font-serif text-4xl md:text-6xl font-light tracking-tight text-brand-text mb-4">The Art of <span class="italic text-brand-accent">Making</span></h2><p class="reveal text-sm font-light leading-[1.8] text-brand-muted max-w-2xl mb-20">Every Maison Noire piece passes through 47 discrete stages over an average of 14 weeks.</p><div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="craftGrid"></div></div></section>
+<!-- QUOTE --><section class="relative h-[60vh] overflow-hidden"><div class="grain absolute inset-0"><img id="quoteImg" src="" alt="" class="w-full h-full object-cover" style="filter:brightness(.5) saturate(.8)"></div><div class="absolute inset-0 bg-gradient-to-r from-brand-bg/70 via-transparent to-brand-bg/70"></div><div class="absolute inset-0 flex items-center justify-center"><div class="text-center reveal-scale"><p id="quoteText" class="font-serif text-3xl md:text-5xl lg:text-6xl font-light italic text-brand-text/90 tracking-tight"></p><p id="quoteAttr" class="text-[10px] tracking-[0.3em] uppercase text-brand-accent mt-6"></p></div></div></section>
+<!-- GALLERY --><section class="py-32 relative" id="gallery"><div class="max-w-7xl mx-auto px-6"><div class="reveal flex items-center gap-4 mb-6"><div class="gold-line-left w-20"></div><span class="text-[10px] font-medium tracking-[0.35em] uppercase text-brand-accent">Chapter Four</span></div><h2 class="reveal font-serif text-4xl md:text-6xl font-light tracking-tight text-brand-text mb-16">In <span class="italic text-brand-accent">Situ</span></h2><div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:grid-rows-2 md:h-[600px]" id="galleryGrid"></div></div></section>
+<div class="section-divider max-w-5xl mx-auto"></div>
+<!-- TESTIMONIALS --><section class="py-32 relative"><div class="max-w-5xl mx-auto px-6"><div class="reveal flex items-center gap-4 mb-6"><div class="gold-line-left w-20"></div><span class="text-[10px] font-medium tracking-[0.35em] uppercase text-brand-accent">Voices</span></div><h2 class="reveal font-serif text-4xl md:text-5xl font-light tracking-tight text-brand-text mb-16">What They <span class="italic text-brand-accent">Feel</span></h2><div class="grid md:grid-cols-2 gap-8" id="testimonialGrid"></div></div></section>
+<!-- CONTACT --><section class="py-32 relative overflow-hidden" id="contact"><div class="absolute inset-0 bg-brand-bg2"></div><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-brand-accent/5 blur-3xl"></div><div class="absolute inset-0 border-y border-brand-border"></div><div class="relative z-10 max-w-3xl mx-auto px-6 text-center"><div class="reveal flex items-center justify-center gap-4 mb-6"><div class="gold-line w-12"></div><span class="text-[10px] font-medium tracking-[0.35em] uppercase text-brand-accent">The Final Chapter</span><div class="gold-line w-12"></div></div><h2 id="contactTitle" class="reveal font-serif text-4xl md:text-6xl font-light tracking-tight text-brand-text mb-6"></h2><p id="contactDesc" class="reveal text-sm font-light leading-[1.8] text-brand-muted max-w-xl mx-auto mb-10"></p><form class="reveal flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleSubscribe(event)"><input type="email" id="emailInput" placeholder="" required class="flex-1 px-5 py-3.5 bg-brand-bg border border-brand-border text-brand-text text-sm font-light placeholder:text-brand-muted/40 focus:outline-none focus:border-brand-accent/40 transition-colors"><button type="submit" id="contactBtn" class="px-8 py-3.5 bg-brand-accent text-brand-bg text-xs font-medium tracking-widest uppercase hover:bg-brand-accentLight transition-all whitespace-nowrap"></button></form><p id="contactDisclaimer" class="reveal text-[10px] text-brand-muted/40 mt-4 tracking-wide"></p><div id="contactInfo" class="reveal grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 pt-10 border-t border-brand-border"></div></div></section>
+<!-- FOOTER --><footer class="border-t border-brand-border bg-brand-bg"><div class="max-w-7xl mx-auto px-6 py-16"><div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16"><div class="md:col-span-1"><div class="flex items-center gap-3 mb-4"><div class="w-8 h-8 border border-brand-accent/50 rounded-sm flex items-center justify-center"><span class="font-serif text-brand-accent text-sm font-medium">M</span></div><span class="font-serif text-lg tracking-widest uppercase text-brand-text">Maison Noire</span></div><p id="footerDesc" class="text-xs font-light leading-relaxed text-brand-muted"></p><div class="flex gap-4 mt-6"><a href="#" class="text-brand-muted hover:text-brand-accent transition-colors"><iconify-icon icon="lucide:instagram" width="16"></iconify-icon></a><a href="#" class="text-brand-muted hover:text-brand-accent transition-colors"><iconify-icon icon="lucide:twitter" width="16"></iconify-icon></a><a href="#" class="text-brand-muted hover:text-brand-accent transition-colors"><iconify-icon icon="lucide:facebook" width="16"></iconify-icon></a><a href="#" class="text-brand-muted hover:text-brand-accent transition-colors"><iconify-icon icon="lucide:youtube" width="16"></iconify-icon></a></div></div><div id="footerCols"></div></div><div class="pt-8 border-t border-brand-border flex flex-col md:flex-row justify-between items-center gap-4"><p id="footerCopy" class="text-[10px] text-brand-muted/40 tracking-wide"></p><div id="footerLegal" class="flex gap-6"></div></div></div></footer>
+</div>
+
+<!-- ADMIN PANEL CONTAINER -->
+<div id="adminPanelContainer"></div>
+<!-- MODAL CONTAINER -->
+<div id="modalContainer"></div>
+
+<script>
+// ============================
+// AES-256-GCM ENCRYPTION ENGINE
+// ============================
+const CryptoEngine = {
+  async deriveKey(password, salt) {
+    const enc = new TextEncoder();
+    const km = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
+    return crypto.subtle.deriveKey({ name: 'PBKDF2', salt, iterations: 100000, hash: 'SHA-256' }, km, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+  },
+  async encrypt(data, password) {
+    const salt = crypto.getRandomValues(new Uint8Array(16));
+    const key = await this.deriveKey(password, salt);
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new TextEncoder().encode(JSON.stringify(data)));
+    const buf = new Uint8Array(salt.length + iv.length + ct.byteLength);
+    buf.set(salt, 0); buf.set(iv, salt.length); buf.set(new Uint8Array(ct), salt.length + iv.length);
+    return btoa(String.fromCharCode(...buf));
+  },
+  async decrypt(b64, password) {
+    const buf = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+    const salt = buf.slice(0, 16), iv = buf.slice(16, 28), ct = buf.slice(28);
+    const key = await this.deriveKey(password, salt);
+    const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ct);
+    return JSON.parse(new TextDecoder().decode(pt));
+  }
+};
+
+// ============================
+// APP STATE
+// ============================
+const API = './api.php';
+let S = {}; // site data
+let isAdmin = false, adminToken = null, adminUser = null, refreshTimer = null, inactivityTimer = null;
+let useLocal = true, encPassword = null;
+const SESSION_TIMEOUT = 30 * 60 * 1000; // 30 min
+
+// ============================
+// TOAST
+// ============================
+function toast(msg, type = 'info') {
+  const c = document.getElementById('toastContainer');
+  const icons = { success: 'lucide:check-circle', error: 'lucide:alert-circle', info: 'lucide:info' };
+  const t = document.createElement('div');
+  t.className = `toast-item ${type}`;
+  t.innerHTML = `<iconify-icon icon="${icons[type]}" width="16" class="text-brand-accent flex-shrink-0"></iconify-icon><span class="text-xs font-light text-brand-text">${msg}</span>`;
+  c.appendChild(t);
+  setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(10px)'; t.style.transition = 'all .3s ease'; setTimeout(() => t.remove(), 300); }, 3500);
+}
+
+// ============================
+// MODAL
+// ============================
+function openModal(html, mw = 'max-w-4xl') {
+  document.getElementById('modalContainer').innerHTML = `<div class="modal-overlay" onclick="if(event.target===this)closeModal()"><div class="modal-content ${mw}">${html}</div></div>`;
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  const o = document.querySelector('.modal-overlay');
+  if (o) { o.style.opacity = '0'; o.style.transition = 'opacity .25s ease'; setTimeout(() => { document.getElementById('modalContainer').innerHTML = ''; document.body.style.overflow = ''; }, 250); }
+}
+
+// ============================
+// API LAYER
+// ============================
+async function api(action, data = null, method = 'GET') {
+  const opts = { method, headers: { 'Content-Type': 'application/json' } };
+  if (adminToken) opts.headers['Authorization'] = `Bearer ${adminToken}`;
+  if (data && method !== 'GET') opts.body = JSON.stringify(data);
+  const r = await fetch(`${API}?action=${action}`, opts);
+  if (!r.ok) { const e = await r.json().catch(() => ({})); throw new Error(e.error || `HTTP ${r.status}`); }
+  return r.json();
+}
+
+// ============================
+// DATA: LOAD
+// ============================
+async function loadSiteData() {
+  try {
+    const r = await api('get_site_data');
+    if (r.success) { S = r.data; useLocal = false; }
+    else throw 0;
+  } catch {
+    useLocal = true;
+    const stored = localStorage.getItem('mn_enc');
+    if (stored && encPassword) {
+      try { S = await CryptoEngine.decrypt(stored, encPassword); } catch { S = getDefaultData(); }
+    } else { S = getDefaultData(); }
+  }
+  renderSite();
+}
+
+function getDefaultData() {
+  return {
+    hero:{image:"https://picsum.photos/seed/darkfurniture-hero/1920/1080.jpg",label:"Established 1987",title:["Where Wood","Whispers","Stories"],titleAccent:"Whispers",subtitle:"Each piece in our collection carries the soul of century-old forests, shaped by hands that understand that true luxury is not seen — it is felt.",ctaPrimary:"Explore Collections",ctaSecondary:"Our Story"},
+    marquee:{items:["Handcrafted in Tuscany","Sustainable Hardwoods","Since 1987","Limited Editions","Bespoke Commissions"]},
+    story:{image:"https://picsum.photos/seed/woodgrain-story/800/1000.jpg",imageQuote:"The tree does not rush to become a table.",heading:["A Legacy Born","From Patience"],headingAccent:"Patience",paragraphs:["In the autumn of 1987, master craftsman Émile Renaud walked away from a flourishing career at one of Paris's most prestigious ateliers. He carried with him nothing but a set of hand-forged chisels and a singular conviction: that furniture should not merely occupy a room — it should anchor a life.","He settled in a converted stone barn in the Tuscan hills, where the light fell differently on every surface and the air smelled of cedar and earth. Here, surrounded by forests of walnut, cherry, and oak, Maison Noire found its first breath.","Three generations later, every piece still begins the same way — with a conversation between the maker and the wood. We listen to the grain, respect the knots, and honor the time it took for a seed to become something worthy of your home."],stats:[{value:"37",label:"Years of Craft"},{value:"12k",label:"Pieces Created"},{value:"48",label:"Artisans"}]},
+    collections:[
+      {id:1,title:"The Walnu't Saga",subtitle:"2024 Collection",description:"Dark American walnut, hand-finished with seven coats of natural oil. Each table tells a different story through its grain.",long_description:"Born from a single 200-year-old black walnut tree felled in the Ohio Valley, this collection embodies the dialogue between wilderness and refinement.",pieces_count:12,year:"2024",is_limited:0,sort_order:1,image_url:"https://picsum.photos/seed/walnut-dining/800/1060.jpg",gallery:["https://picsum.photos/seed/walnut-1/600/800.jpg","https://picsum.photos/seed/walnut-2/600/800.jpg"],materials:"American Black Walnut, Tung Oil, Brass Hardware",lead_time:"14–18 weeks"},
+      {id:2,title:"Cherry Reverie",subtitle:"2024 Collection",description:"European cherry wood that deepens to a rich auburn over time. Furniture that ages alongside you.",long_description:"Sourced from managed forests in the Jura Mountains.",pieces_count:8,year:"2024",is_limited:0,sort_order:2,image_url:"https://picsum.photos/seed/cherry-lounge/800/1060.jpg",gallery:["https://picsum.photos/seed/cherry-1/600/800.jpg"],materials:"European Cherry, Linseed Oil",lead_time:"12–16 weeks"},
+      {id:3,title:"Oak Silence",subtitle:"2024 Collection",description:"White oak stripped to its essence. Japanese-inspired joinery meets Scandinavian restraint.",long_description:"This collection began with a question: what happens when you remove everything that isn't essential?",pieces_count:15,year:"2024",is_limited:0,sort_order:3,image_url:"https://picsum.photos/seed/oak-minimal/800/1060.jpg",gallery:["https://picsum.photos/seed/oak-1/600/800.jpg","https://picsum.photos/seed/oak-2/600/800.jpg"],materials:"Quarter-sawn White Oak, Natural Wax",lead_time:"10–14 weeks"},
+      {id:4,title:"Ebony Noir",subtitle:"Limited Edition",description:"Macassar ebony with brass inlays. Only six pieces per year, each numbered.",long_description:"Macassar ebony is one of the world's most precious woods.",pieces_count:6,year:"2024",is_limited:1,sort_order:4,image_url:"https://picsum.photos/seed/ebony-noir/800/1060.jpg",gallery:["https://picsum.photos/seed/ebony-1/600/800.jpg"],materials:"Macassar Ebony, Recycled Brass",lead_time:"20–26 weeks"}
+    ],
+    craft:{steps:[{num:"01",icon:"lucide:trees",title:"Selection",desc:"Our forester walks the forests for weeks, marking only trees that have lived a full century."},{num:"02",icon:"lucide:wind",title:"Seasoning",desc:"Wood air-dries for a minimum of two years in our open-sided barns."},{num:"03",icon:"lucide:pen-tool",title:"Shaping",desc:"Hand tools only. No CNC, no routers. The craftsman reads the grain with his fingertips."},{num:"04",icon:"lucide:droplets",title:"Finishing",desc:"Seven coats of hand-rubbed tung oil, applied over three weeks."}]},
+    quote:{image:"https://picsum.photos/seed/workshop-panorama/1920/800.jpg",text:"The hand knows what the mind forgets",attribution:"Émile Renaud, Founder"},
+    gallery:{items:[{image:"https://picsum.photos/seed/livingroom-wide/900/1200.jpg",label:"Living Room",title:"The Walnu't Saga",span:"col-span-2 row-span-2"},{image:"https://picsum.photos/seed/bedroom-cozy/500/600.jpg",label:"Bedroom",title:"Cherry Reverie",span:"col-span-1"},{image:"https://picsum.photos/seed/study-dark/500/600.jpg",label:"Study",title:"Oak Silence",span:"col-span-1"},{image:"https://picsum.photos/seed/dining-elegant/1000/600.jpg",label:"Dining Room",title:"Ebony Noir",span:"col-span-2"}]},
+    testimonials:{items:[{quote:"I ran my hand across the table's surface and understood something I never had about furniture — it can have a pulse.",name:"Isabelle Moreau",role:"Architect, Paris",photo:"https://picsum.photos/seed/person-architect/100/100.jpg"},{quote:"We commissioned a dining table for our family home. Three generations now gather around it.",name:"Henrik Lindqvist",role:"Collector, Stockholm",photo:"https://picsum.photos/seed/person-collector/100/100.jpg"},{quote:"In a world of disposable everything, Maison Noire makes objects that refuse to be forgotten.",name:"Clara Ashworth",role:"Author, London",photo:"https://picsum.photos/seed/person-writer/100/100.jpg"},{quote:"The waiting list was nine months. When the chair finally arrived, I understood why.",name:"Yuki Tanaka",role:"Designer, Tokyo",photo:"https://picsum.photos/seed/person-designer/100/100.jpg"}]},
+    contact:{heading:"Begin Your",headingAccent:"Story",description:"Join a private circle of those who understand that the best things in life are not bought — they are chosen, with care.",buttonText:"Subscribe",placeholder:"Your email address",address:"Via del Legno 14\n53100 Siena, Italy",phone:"+39 0577 284 193\nMon–Sat, 10am–6pm CET",email:"atelier@maisonnoire.it\ncommissions@maisonnoire.it",disclaimer:"We respect your privacy. Unsubscribe anytime."},
+    footer:{description:"Furniture that carries the weight of time and the lightness of beauty.",columns:[{title:"Collections",links:["The Walnu't Saga","Cherry Reverie","Oak Silence","Ebony Noir","Archive"]},{title:"Atelier",links:["Our Story","Craftsmanship","The Artisans","Sustainability","Bespoke Commissions"]},{title:"Support",links:["Care Guide","Shipping & Delivery","Returns Policy","Warranty","Contact Us"]}],copyright:"© 2024 Maison Noire. All rights reserved.",privacyLinks:["Privacy Policy","Terms of Service","Cookie Preferences"]}
+  };
+}
+
+// ============================
+// DATA: SAVE
+// ============================
+async function saveSection(section, data) {
+  if (!useLocal) {
+    try { await api('save_site_data', { section, data }, 'POST'); return; } catch (e) { toast('API error, saving locally', 'error'); }
+  }
+  S[section] = data;
+  if (encPassword) {
+    try { localStorage.setItem('mn_enc', await CryptoEngine.encrypt(S, encPassword)); } catch { localStorage.setItem('mn_data', JSON.stringify(S)); }
+  } else { localStorage.setItem('mn_data', JSON.stringify(S)); }
+}
+
+// ============================
+// RENDER SITE
+// ============================
+function renderSite() {
+  const h = S.hero || {};
+  document.getElementById('heroImg').src = h.image || '';
+  document.getElementById('heroLabel').textContent = h.label || '';
+  const titleLines = (h.title || []).map((l, i) => i === (h.titleAccent ? h.title.indexOf(h.titleAccent) : -1) ? `<span class="italic font-light text-brand-accent">${l}</span>` : l).join('<br>');
+  document.getElementById('heroTitle').innerHTML = titleLines;
+  document.getElementById('heroSubtitle').textContent = h.subtitle || '';
+  document.getElementById('heroCta1').innerHTML = `${h.ctaPrimary || ''} <iconify-icon icon="lucide:arrow-right" width="14" class="group-hover:translate-x-1 transition-transform"></iconify-icon>`;
+  document.getElementById('heroCta2').textContent = h.ctaSecondary || '';
+
+  // Marquee
+  const items = (S.marquee?.items || []);
+  const doubled = [...items, ...items];
+  document.getElementById('marqueeTrack').innerHTML = doubled.map(i => `<span class="text-[11px] tracking-[0.3em] uppercase text-brand-muted/40 mx-8">${i}</span><span class="text-brand-accent/30 mx-4">✦</span>`).join('');
+
+  // Story
+  const st = S.story || {};
+  document.getElementById('storyImg').src = st.image || '';
+  document.getElementById('storyImgQuote').textContent = st.imageQuote || '';
+  const sh = st.heading || [];
+  document.getElementById('storyTitle').innerHTML = sh.map((l, i) => i === (st.headingAccent ? sh.indexOf(st.headingAccent) : -1) ? `From <span class="italic text-brand-accent">${l}</span>` : l).join(' ');
+  document.getElementById('storyParagraphs').innerHTML = (st.paragraphs || []).map(p => `<p class="text-sm font-light leading-[1.8] text-brand-muted">${p}</p>`).join('');
+  document.getElementById('storyStats').innerHTML = (st.stats || []).map(s => `<div><span class="font-serif text-3xl text-brand-accent">${s.value}</span><p class="text-[10px] tracking-widest uppercase text-brand-muted mt-1">${s.label}</p></div>`).join('');
+
+  // Collections
+  renderCollections();
+
+  // Craft
+  document.getElementById('craftGrid').innerHTML = (S.craft?.steps || []).map((s, i) => `<div class="reveal card-glow border border-brand-border bg-brand-bg2 p-8 group" style="transition-delay:${i * .1}s"><div class="flex items-center justify-between mb-6"><span class="font-serif text-4xl text-brand-accent/20 group-hover:text-brand-accent/40 transition-colors">${s.num}</span><iconify-icon icon="${s.icon}" width="20" class="text-brand-accent/40"></iconify-icon></div><h3 class="font-serif text-lg text-brand-text mb-3">${s.title}</h3><p class="text-xs font-light leading-[1.8] text-brand-muted">${s.desc}</p><div class="gold-line-left w-12 mt-6 opacity-40 group-hover:w-20 group-hover:opacity-70 transition-all"></div></div>`).join('');
+
+  // Quote
+  const q = S.quote || {};
+  document.getElementById('quoteImg').src = q.image || '';
+  document.getElementById('quoteText').textContent = `"${q.text || ''}"`;
+  document.getElementById('quoteAttr').textContent = `— ${q.attribution || ''}`;
+
+  // Gallery
+  const gi = S.gallery?.items || [];
+  document.getElementById('galleryGrid').innerHTML = gi.map((g, i) => `<div class="reveal-scale ${g.span} relative overflow-hidden group" style="transition-delay:${i * .1}s"><div class="grain absolute inset-0"><img src="${g.image}" alt="" class="w-full h-full object-cover img-hover"></div><div class="absolute inset-0 bg-gradient-to-t from-brand-bg/70 to-transparent"></div><div class="absolute bottom-4 left-4"><span class="text-[10px] tracking-widest uppercase text-brand-accent">${g.label}</span><h3 class="font-serif text-lg text-brand-text mt-0.5">${g.title}</h3></div></div>`).join('');
+
+  // Testimonials
+  const stars = '<div class="flex gap-1 mb-6">' + Array(5).fill('<iconify-icon icon="lucide:star" width="12" class="text-brand-accent"></iconify-icon>').join('') + '</div>';
+  document.getElementById('testimonialGrid').innerHTML = (S.testimonials?.items || []).map((t, i) => `<div class="reveal card-glow border border-brand-border bg-brand-bg2 p-8" style="transition-delay:${i * .1}s">${stars}<p class="font-serif text-lg italic text-brand-text/90 leading-relaxed mb-8">"${t.quote}"</p><div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full overflow-hidden border border-brand-border"><img src="${t.photo}" alt="" class="w-full h-full object-cover"></div><div><p class="text-sm text-brand-text">${t.name}</p><p class="text-[10px] tracking-widest uppercase text-brand-muted">${t.role}</p></div></div></div>`).join('');
+
+  // Contact
+  const co = S.contact || {};
+  document.getElementById('contactTitle').innerHTML = `${co.heading || ''} <span class="italic text-brand-accent">${co.headingAccent || ''}</span>`;
+  document.getElementById('contactDesc').textContent = co.description || '';
+  document.getElementById('emailInput').placeholder = co.placeholder || '';
+  document.getElementById('contactBtn').textContent = co.buttonText || 'Subscribe';
+  document.getElementById('contactDisclaimer').textContent = co.disclaimer || '';
+  const ci = co.address ? co.address.split('\n') : [];
+  const cp = co.phone ? co.phone.split('\n') : [];
+  const ce = co.email ? co.email.split('\n') : [];
+  document.getElementById('contactInfo').innerHTML = `
+    <div><iconify-icon icon="lucide:map-pin" width="16" class="text-brand-accent/50 mb-2"></iconify-icon><p class="text-xs font-light text-brand-muted">${ci.join('<br>')}</p></div>
+    <div><iconify-icon icon="lucide:phone" width="16" class="text-brand-accent/50 mb-2"></iconify-icon><p class="text-xs font-light text-brand-muted">${cp.join('<br>')}</p></div>
+    <div><iconify-icon icon="lucide:mail" width="16" class="text-brand-accent/50 mb-2"></iconify-icon><p class="text-xs font-light text-brand-muted">${ce.join('<br>')}</p></div>`;
+
+  // Footer
+  const f = S.footer || {};
+  document.getElementById('footerDesc').textContent = f.description || '';
+  document.getElementById('footerCols').innerHTML = (f.columns || []).map(c => `<div><h4 class="text-[10px] font-medium tracking-[0.25em] uppercase text-brand-accent mb-6">${c.title}</h4><ul class="space-y-3">${c.links.map(l => `<li><a href="#" class="text-xs font-light text-brand-muted hover:text-brand-text transition-colors">${l}</a></li>`).join('')}</ul></div>`).join('');
+  document.getElementById('footerCopy').textContent = f.copyright || '';
+  document.getElementById('footerLegal').innerHTML = (f.privacyLinks || []).map(l => `<a href="#" class="text-[10px] text-brand-muted/40 hover:text-brand-muted transition-colors tracking-wide">${l}</a>`).join('');
+
+  // Re-observe reveals
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => obs.observe(el));
+}
+
+function renderCollections() {
+  const sorted = [...(S.collections || [])].sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
+  document.getElementById('collectionScroll').innerHTML = sorted.map((c, i) => `
+    <div class="scroll-card w-80 md:w-96 group" style="animation:fadeInUp .6s ease-out ${i * .1}s forwards;opacity:0">
+      <div class="card-glow border border-brand-border bg-brand-card overflow-hidden cursor-pointer" onclick="openCollectionDetail(${c.id})">
+        <div class="grain relative aspect-[3/4] overflow-hidden">
+          <img src="${c.image_url}" alt="${c.title}" class="w-full h-full object-cover img-hover" onerror="this.src='https://picsum.photos/seed/fb-${c.id}/800/1060.jpg'">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-bg/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500"><span class="text-[10px] tracking-widest uppercase text-brand-accent">${c.pieces_count} Pieces</span></div>
+          ${c.is_limited ? '<div class="absolute top-4 right-4 px-2.5 py-1 bg-brand-accent/90 text-brand-bg text-[9px] font-medium tracking-widest uppercase">Limited</div>' : ''}
+        </div>
+        <div class="p-6"><p class="text-[10px] tracking-[0.25em] uppercase text-brand-muted mb-2">${c.subtitle || c.year}</p><h3 class="font-serif text-xl text-brand-text group-hover:text-brand-accent transition-colors">${c.title}</h3><p class="text-xs font-light text-brand-muted mt-2 leading-relaxed line-clamp-3">${c.description}</p><div class="flex items-center gap-2 mt-4 text-brand-accent"><span class="text-[10px] tracking-widest uppercase">View Collection</span><iconify-icon icon="lucide:arrow-right" width="12" class="group-hover:translate-x-1 transition-transform"></iconify-icon></div></div>
+      </div>
+    </div>`).join('');
+}
+
+function openCollectionDetail(id) {
+  const c = (S.collections || []).find(x => x.id === id); if (!c) return;
+  const gal = (c.gallery || []).length ? `<div class="mt-8"><h4 class="text-[10px] tracking-[0.25em] uppercase text-brand-accent mb-4">Gallery</h4><div class="grid grid-cols-3 gap-3">${c.gallery.map(g => `<div class="grain aspect-[3/4] overflow-hidden"><img src="${g}" alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"></div>`).join('')}</div></div>` : '';
+  const det = (c.materials || c.lead_time) ? `<div class="grid grid-cols-2 gap-6 mt-6 pt-6 border-t border-brand-border">${c.materials ? `<div><p class="text-[10px] tracking-widest uppercase text-brand-accent mb-1">Materials</p><p class="text-xs font-light text-brand-muted">${c.materials}</p></div>` : ''}${c.lead_time ? `<div><p class="text-[10px] tracking-widest uppercase text-brand-accent mb-1">Lead Time</p><p class="text-xs font-light text-brand-muted">${c.lead_time}</p></div>` : ''}</div>` : '';
+  openModal(`<div class="relative"><button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-brand-muted hover:text-brand-accent transition-colors"><iconify-icon icon="lucide:x" width="20"></iconify-icon></button><div class="grain aspect-[16/9] overflow-hidden"><img src="${c.image_url}" alt="${c.title}" class="w-full h-full object-cover"></div><div class="p-8 md:p-10"><div class="flex items-center gap-3 mb-4"><span class="text-[10px] tracking-[0.25em] uppercase text-brand-accent">${c.subtitle || c.year}</span>${c.is_limited ? '<span class="px-2 py-0.5 bg-brand-accent/15 text-brand-accent text-[9px] font-medium tracking-widest uppercase">Limited</span>' : ''}</div><h2 class="font-serif text-3xl md:text-4xl text-brand-text mb-2">${c.title}</h2><p class="text-xs text-brand-muted mb-6">${c.pieces_count} Pieces</p><p class="text-sm font-light leading-[1.8] text-brand-muted">${c.long_description || c.description}</p>${det}${gal}<div class="flex flex-wrap gap-3 mt-8 pt-6 border-t border-brand-border"><button class="admin-btn admin-btn-primary">Request a Viewing</button><button class="admin-btn admin-btn-outline">Download Catalogue</button></div></div></div>`, 'max-w-4xl');
+}
+
+// ============================
+// ADMIN: AUTH
+// ============================
+function openAdminLogin() {
+  if (isAdmin) { openAdminPanel(); return; }
+  openModal(`<div class="p-8 md:p-10 max-w-md mx-auto"><button onclick="closeModal()" class="absolute top-4 right-4 text-brand-muted hover:text-brand-accent transition-colors"><iconify-icon icon="lucide:x" width="20"></iconify-icon></button><div class="text-center mb-8"><div class="w-12 h-12 border border-brand-accent/30 rounded-sm flex items-center justify-center mx-auto mb-4"><iconify-icon icon="lucide:shield" width="20" class="text-brand-accent"></iconify-icon></div><h3 class="font-serif text-2xl text-brand-text">Admin Access</h3><p class="text-xs text-brand-muted mt-2">Secure authentication required</p></div><form onsubmit="handleLogin(event)"><div class="space-y-4"><div><label class="text-[10px] tracking-widest uppercase text-brand-muted block mb-2">Username</label><input type="text" id="loginUser" class="admin-input" required autocomplete="username"></div><div><label class="text-[10px] tracking-widest uppercase text-brand-muted block mb-2">Password</label><input type="password" id="loginPass" class="admin-input" required autocomplete="current-password"></div></div><button type="submit" id="loginBtn" class="admin-btn admin-btn-primary w-full mt-6">Authenticate</button><p class="text-[10px] text-brand-muted/40 text-center mt-4">AES-256-GCM encrypted session · Demo: admin / maison2024</p></form></div>`, 'max-w-md');
+}
+
+async function handleLogin(e) {
+  e.preventDefault();
+  const btn = document.getElementById('loginBtn');
+  const u = document.getElementById('loginUser').value, p = document.getElementById('loginPass').value;
+  btn.innerHTML = '<span class="spinner"></span>'; btn.disabled = true;
+  try {
+    const r = await api('login', { username: u, password: p }, 'POST');
+    if (r.success) { adminToken = r.token; adminUser = r.user; isAdmin = true; encPassword = p; localStorage.setItem('mn_tok', r.token); localStorage.setItem('mn_ref', r.refresh); localStorage.setItem('mn_usr', u); localStorage.setItem('mn_enc_pw', p); startSession(); closeModal(); document.getElementById('adminBadge').classList.add('visible'); toast('Secure session established', 'success'); openAdminPanel(); return; }
+  } catch (e) { /* fallback */ }
+  if (u === 'admin' && p === 'maison2024') {
+    adminToken = 'local'; adminUser = u; isAdmin = true; encPassword = p;
+    localStorage.setItem('mn_tok', 'local'); localStorage.setItem('mn_usr', u); localStorage.setItem('mn_enc_pw', p);
+    startSession(); closeModal(); document.getElementById('adminBadge').classList.add('visible'); toast('Secure session established', 'success'); openAdminPanel();
+  } else { toast('Invalid credentials', 'error'); btn.innerHTML = 'Authenticate'; btn.disabled = false; }
+}
+
+function startSession() {
+  clearInterval(refreshTimer); clearTimeout(inactivityTimer);
+  // Token refresh every 50 min
+  refreshTimer = setInterval(async () => {
+    if (!useLocal) { try { const r = await api('refresh_token', { refresh_token: localStorage.getItem('mn_ref') }, 'POST'); if (r.success) { adminToken = r.token; localStorage.setItem('mn_tok', r.token); } } catch {} }
+  }, 50 * 60 * 1000);
+  // Inactivity logout
+  const resetTimer = () => { clearTimeout(inactivityTimer); inactivityTimer = setTimeout(logout, SESSION_TIMEOUT); };
+  ['mousemove','keydown','scroll','click'].forEach(ev => document.addEventListener(ev, resetTimer, { passive: true }));
+  resetTimer();
+}
+
+function logout() {
+  isAdmin = false; adminToken = null; adminUser = null; encPassword = null;
+  localStorage.removeItem('mn_tok'); localStorage.removeItem('mn_ref'); localStorage.removeItem('mn_usr'); localStorage.removeItem('mn_enc_pw');
+  clearInterval(refreshTimer); clearTimeout(inactivityTimer);
+  document.getElementById('adminBadge').classList.remove('visible');
+  closeAdminPanel(); toast('Session terminated', 'info');
+}
+
+// ============================
+// ADMIN: FULL PANEL
+// ============================
+const ADMIN_TABS = [
+  { id: 'dashboard', icon: 'lucide:layout-dashboard', label: 'Dashboard' },
+  { id: 'hero', icon: 'lucide:image', label: 'Hero' },
+  { id: 'marquee', icon: 'lucide:scroll-text', label: 'Marquee' },
+  { id: 'story', icon: 'lucide:book-open', label: 'Story' },
+  { id: 'collections', icon: 'lucide:layers', label: 'Collections' },
+  { id: 'craft', icon: 'lucide:hammer', label: 'Craftsmanship' },
+  { id: 'quote', icon: 'lucide:quote', label: 'Quote' },
+  { id: 'gallery', icon: 'lucide:grid-3x3', label: 'Gallery' },
+  { id: 'testimonials', icon: 'lucide:message-square', label: 'Testimonials' },
+  { id: 'contact', icon: 'lucide:mail', label: 'Contact' },
+  { id: 'footer', icon: 'lucide:footprints', label: 'Footer' },
+  { id: 'settings', icon: 'lucide:settings', label: 'Security' },
+];
+
+let currentTab = 'dashboard';
+
+function openAdminPanel() {
+  if (!isAdmin) { openAdminLogin(); return; }
+  currentTab = 'dashboard';
+  renderAdminPanel();
+}
+
+function closeAdminPanel() { document.getElementById('adminPanelContainer').innerHTML = ''; document.body.style.overflow = ''; }
+
+function renderAdminPanel() {
+  document.body.style.overflow = 'hidden';
+  const c = document.getElementById('adminPanelContainer');
+  c.innerHTML = `<div class="admin-panel">
+    <div class="admin-sidebar">
+      <div class="p-5 border-b border-brand-border/50">
+        <div class="flex items-center gap-2 mb-1"><div class="w-6 h-6 border border-brand-accent/40 rounded-sm flex items-center justify-center"><span class="font-serif text-brand-accent text-[10px]">M</span></div><span class="font-serif text-sm tracking-widest uppercase text-brand-text">CMS</span></div>
+        <p class="text-[9px] text-brand-muted/50 mt-1 tracking-wide">${useLocal ? 'Local (Encrypted)' : 'MySQL Connected'} · ${adminUser}</p>
+      </div>
+      <nav class="flex-1 py-3">${ADMIN_TABS.map(t => `<div class="admin-nav-item ${currentTab===t.id?'active':''}" onclick="switchTab('${t.id}')"><iconify-icon icon="${t.icon}" width="15"></iconify-icon><span>${t.label}</span></div>`).join('')}</nav>
+      <div class="p-4 border-t border-brand-border/50"><button onclick="closeAdminPanel();renderSite()" class="admin-btn admin-btn-outline w-full mb-2 flex items-center justify-center gap-2"><iconify-icon icon="lucide:eye" width="14"></iconify-icon> View Site</button><button onclick="logout()" class="admin-btn admin-btn-danger w-full flex items-center justify-center gap-2"><iconify-icon icon="lucide:log-out" width="14"></iconify-icon> Logout</button></div>
+    </div>
+    <div class="admin-main" id="adminMain"></div>
+  </div>`;
+  renderTabContent();
+}
+
+function switchTab(id) { currentTab = id; document.querySelectorAll('.admin-nav-item').forEach(n => n.classList.toggle('active', n.textContent.trim() === ADMIN_TABS.find(t=>t.id===id)?.label)); renderTabContent(); }
+
+function renderTabContent() {
+  const m = document.getElementById('adminMain');
+  const renderers = { dashboard: renderDashboard, hero: renderHeroEditor, marquee: renderMarqueeEditor, story: renderStoryEditor, collections: renderCollectionsAdmin, craft: renderCraftEditor, quote: renderQuoteEditor, gallery: renderGalleryEditor, testimonials: renderTestimonialsEditor, contact: renderContactEditor, footer: renderFooterEditor, settings: renderSettings };
+  (renderers[currentTab] || renderDashboard)(m);
+}
+
+// Helper: image upload field
+function imgField(id, val, subdir = 'collections') {
+  return `<div class="upload-zone" id="uz_${id}" onclick="document.getElementById('fi_${id}').click()" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event,'${id}','${subdir}')">
+    <div id="prev_${id}">${val ? `<img src="${val}" alt="Preview">` : `<iconify-icon icon="lucide:image-plus" width="28" class="text-brand-muted/30 mb-2"></iconify-icon><p class="text-[10px] text-brand-muted/40">Click or drop</p>`}</div></div>
+    <input type="file" id="fi_${id}" class="hidden" accept="image/*" onchange="handleFilePick(event,'${id}','${subdir}')">
+    <input type="url" id="url_${id}" class="admin-input mt-2" placeholder="Or paste URL" value="${val || ''}" oninput="previewUrl('${id}',this.value)">`;
+}
+
+let tempFiles = {};
+function handleFilePick(e, id, sub) { if (e.target.files[0]) processUpload(e.target.files[0], id, sub); }
+function handleDrop(e, id, sub) { e.preventDefault(); e.currentTarget.classList.remove('dragover'); const f = e.dataTransfer.files[0]; if (f && f.type.startsWith('image/')) processUpload(f, id, sub); }
+async function processUpload(file, id, sub) {
+  if (file.size > 5*1024*1024) { toast('Max 5MB','error'); return; }
+  if (!useLocal) {
+    try { const fd = new FormData(); fd.append('image', file); const r = await fetch(`${API}?action=upload_image&subdir=${sub}`, { method:'POST', headers: adminToken && adminToken!=='local' ? {Authorization:`Bearer ${adminToken}`} : {}, body: fd }); const j = await r.json(); if (j.success) { document.getElementById(`prev_${id}`).innerHTML = `<img src="${j.url}" alt="">`; document.getElementById(`url_${id}`).value = j.url; tempFiles[id] = j.url; return; } } catch {}
+  }
+  const reader = new FileReader();
+  reader.onload = (e) => { document.getElementById(`prev_${id}`).innerHTML = `<img src="${e.target.result}" alt="">`; document.getElementById(`url_${id}`).value = ''; tempFiles[id] = e.target.result; };
+  reader.readAsDataURL(file);
+}
+function previewUrl(id, url) { if (url && !tempFiles[id]) document.getElementById(`prev_${id}`).innerHTML = url ? `<img src="${url}" alt="" onerror="this.parentElement.innerHTML='<iconify-icon icon=\\'lucide:image-off\\' width=\\'28\\' class=\\'text-brand-muted/30\\'></iconify-icon>'">` : `<iconify-icon icon="lucide:image-plus" width="28" class="text-brand-muted/30 mb-2"></iconify-icon><p class="text-[10px] text-brand-muted/40">Click or drop</p>`; }
+
+function getImgVal(id) { return tempFiles[id] || document.getElementById(`url_${id}`)?.value || ''; }
+
+// ============================
+// ADMIN TAB RENDERERS
+// ============================
+function renderDashboard(m) {
+  const cols = S.collections || [];
+  m.innerHTML = `<h2 class="font-serif text-2xl text-brand-text mb-2">Dashboard</h2><p class="text-xs text-brand-muted mb-8">Overview of your site content</p>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+    <div class="bg-brand-bg2 border border-brand-border/50 p-5 rounded-lg"><p class="text-[10px] tracking-widest uppercase text-brand-muted mb-1">Collections</p><p class="font-serif text-3xl text-brand-accent">${cols.length}</p></div>
+    <div class="bg-brand-bg2 border border-brand-border/50 p-5 rounded-lg"><p class="text-[10px] tracking-widest uppercase text-brand-muted mb-1">Total Pieces</p><p class="font-serif text-3xl text-brand-accent">${cols.reduce((a,c)=>a+c.pieces_count,0)}</p></div>
+    <div class="bg-brand-bg2 border border-brand-border/50 p-5 rounded-lg"><p class="text-[10px] tracking-widest uppercase text-brand-muted mb-1">Limited Editions</p><p class="font-serif text-3xl text-brand-accent">${cols.filter(c=>c.is_limited).length}</p></div>
+    <div class="bg-brand-bg2 border border-brand-border/50 p-5 rounded-lg"><p class="text-[10px] tracking-widest uppercase text-brand-muted mb-1">Storage</p><p class="font-serif text-3xl text-brand-accent">${useLocal?'Encrypted':'MySQL'}</p></div>
+  </div>
+  <h3 class="text-sm text-brand-text font-medium mb-4">Quick Edit</h3>
+  <div class="grid md:grid-cols-2 gap-3">${ADMIN_TABS.filter(t=>t.id!=='dashboard'&&t.id!=='settings').map(t=>`<div class="list-item flex items-center gap-3 cursor-pointer hover:border-brand-accent/20" onclick="switchTab('${t.id}')"><iconify-icon icon="${t.icon}" width="16" class="text-brand-accent/50"></iconify-icon><span class="text-sm text-brand-text">${t.label}</span><iconify-icon icon="lucide:chevron-right" width="14" class="text-brand-muted/30 ml-auto"></iconify-icon></div>`).join('')}</div>`;
+}
+
+function renderHeroEditor(m) {
+  const h = S.hero || {};
+  m.innerHTML = `<h2 class="font-serif text-2xl text-brand-text mb-2">Hero Section</h2><p class="text-xs text-brand-muted mb-8">Edit the main hero banner</p>
+  <form onsubmit="saveHero(event)">
+    <div class="field-group"><label class="field-label">Background Image</label>${imgField('hero_img', h.image, 'hero')}</div>
+    <div class="field-group"><label class="field-label">Label</label><input class="admin-input" id="f_hero_label" value="${h.label||''}"></div>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="field-group"><label class="field-label">Title Line 1</label><input class="admin-input" id="f_hero_t1" value="${(h.title||[])[0]||''}"></div>
+      <div class="field-group"><label class="field-label">Title Line 2 (accent)</label><input class="admin-input" id="f_hero_t2" value="${(h.title||[])[1]||''}"><p class="field-hint">This line will be italic gold</p></div>
+      <div class="field-group"><label class="field-label">Title Line 3</label><input class="admin-input" id="f_hero_t3" value="${(h.title||[])[2]||''}"></div>
+    </div>
+    <div class="field-group"><label class="field-label">Subtitle</label><textarea class="admin-input" id="f_hero_sub">${h.subtitle||''}</textarea></div>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="field-group"><label class="field-label">Primary CTA</label><input class="admin-input" id="f_hero_cta1" value="${h.ctaPrimary||''}"></div>
+      <div class="field-group"><label class="field-label">Secondary CTA</label><input class="admin-input" id="f_hero_cta2" value="${h.ctaSecondary||''}"></div>
+    </div>
+    <button type="submit" class="admin-btn admin-btn-primary mt-4">Save Hero</button>
+  </form>`;
+}
+
+async function saveHero(e) {
+  e.preventDefault();
+  const data = { image: getImgVal('hero_img'), label: gv('f_hero_label'), title: [gv('f_hero_t1'), gv('f_hero_t2'), gv('f_hero_t3')], titleAccent: gv('f_hero_t2'), subtitle: gv('f_hero_sub'), ctaPrimary: gv('f_hero_cta1'), ctaSecondary: gv('f_hero_cta2') };
+  await saveSection('hero', data); tempFiles = {}; toast('Hero saved','success');
+}
+
+function renderMarqueeEditor(m) {
+  const items = S.marquee?.items || [];
+  m.innerHTML = `<h2 class="font-serif text-2xl text-brand-text mb-2">Marquee Banner</h2><p class="text-xs text-brand-muted mb-8">Edit the scrolling text items</p>
+  <form onsubmit="saveMarquee(event)">
+    <div id="marqueeItems">${items.map((it,i) => `<div class="list-item flex items-center gap-3"><span class="text-xs text-brand-muted/40 w-6">${i+1}</span><input class="admin-input flex-1" value="${it}" data-mq="${i}"><button type="button" onclick="this.closest('.list-item').remove()" class="text-brand-muted/40 hover:text-red-400 transition-colors"><iconify-icon icon="lucide:trash-2" width="14"></iconify-icon></button></div>`).join('')}</div>
+    <button type="button" onclick="addMarqueeItem()" class="admin-btn admin-btn-outline mt-3 text-brand-accent">+ Add Item</button>
+    <button type="submit" class="admin-btn admin-btn-primary mt-4 block">Save Marquee</button>
+  </form>`;
+}
+function addMarqueeItem() { const c = document.getElementById('marqueeItems'); const n = c.children.length; c.insertAdjacentHTML('beforeend', `<div class="list-item flex items-center gap-3"><span class="text-xs text-brand-muted/40 w-6">${n+1}</span><input class="admin-input flex-1" value="" data-mq="${n}"><button type="button" onclick="this.closest('.list-item').remove()" class="text-brand-muted/40 hover:text-red-400 transition-colors"><iconify-icon icon="lucide:trash-2" width="14"></iconify-icon></button></div>`); }
+async function saveMarquee(e) { e.preventDefault(); const items = [...document.querySelectorAll('[data-mq]')].map(i => i.value).filter(v => v); await saveSection('marquee', { items }); toast('Marquee saved','success'); }
+
+function renderStoryEditor(m) {
+  const st = S.story || {};
+  m.innerHTML = `<h2 class="font-serif text-2xl text-brand-text mb-2">Story Section</h2><p class="text-xs text-brand-muted mb-8">Edit the founding story</p>
+  <form onsubmit="saveStory(event)">
+    <div class="field-group"><label class="field-label">Image</label>${imgField('story_img', st.image, 'story')}</div>
+    <div class="field-group"><label class="field-label">Image Quote</label><input class="admin-input" id="f_st_iq" value="${st.imageQuote||''}"></div>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="field-group"><label class="field-label">Heading Line 1</label><input class="admin-input" id="f_st_h1" value="${(st.heading||[])[0]||''}"></div>
+      <div class="field-group"><label class="field-label">Heading Line 2 (accent)</label><input class="admin-input" id="f_st_h2" value="${(st.heading||[])[1]||''}"></div>
+    </div>
+    <div class="field-group"><label class="field-label">Paragraphs</label><div id="storyParas">${(st.paragraphs||[]).map((p,i) => `<div class="list-item"><div class="flex items-center justify-between mb-2"><span class="text-[10px] text-brand-muted/40">Paragraph ${i+1}</span><button type="button" onclick="this.closest('.list-item').remove()" class="text-brand-muted/40 hover:text-red-400"><iconify-icon icon="lucide:trash-2" width="12"></iconify-icon></button></div><textarea class="admin-input" data-sp="${i}" rows="3">${p}</textarea></div>`).join('')}</div><button type="button" onclick="addStoryPara()" class="admin-btn admin-btn-outline mt-3 text-brand-accent">+ Add Paragraph</button></div>
+    <div class="field-group"><label class="field-label">Statistics</label><div id="storyStatsEditor">${(st.stats||[]).map((s,i) => `<div class="list-item flex items-center gap-3"><span class="text-xs text-brand-muted/40 w-6">${i+1}</span><input class="admin-input w-24" placeholder="Value" value="${s.value}" data-sv="${i}"><input class="admin-input flex-1" placeholder="Label" value="${s.label}" data-sl="${i}"><button type="button" onclick="this.closest('.list-item').remove()" class="text-brand-muted/40 hover:text-red-400"><iconify-icon icon="lucide:trash-2" width="14"></iconify-icon></button></div>`).join('')}</div><button type="button" onclick="addStoryStat()" class="admin-btn admin-btn-outline mt-3 text-brand-accent">+ Add Stat</button></div>
+    <button type="submit" class="admin-btn admin-btn-primary mt-4">Save Story</button>
+  </form>`;
+}
+function addStoryPara() { const c = document.getElementById('storyParas'); const n = c.children.length; c.insertAdjacentHTML('beforeend', `<div class="list-item"><div class="flex items-center justify-between mb-2"><span class="text-[10px] text-brand-muted/40">Paragraph ${n+1}</span><button type="button" onclick="this.closest('.list-item').remove()" class="text-brand-muted/40 hover:text-red-400"><iconify-icon icon="lucide:trash-2" width="12"></iconify-icon></button></div><textarea class="admin-input" data-sp="${n}" rows="3"></textarea></div>`); }
+function addStoryStat() { const c = document.getElementById('storyStatsEditor'); const n = c.children.length; c.insertAdjacentHTML('beforeend', `<div class="list-item flex items-center gap-3"><span class="text-xs text-brand-muted/40 w-6">${n+1}</span><input class="admin-input w-24" placeholder="Value" data-sv="${n}"><input class="admin-input flex-1" placeholder="Label" data-sl="${n}"><button type="button" onclick="this.closest('.list-item').remove()" class="text-brand-muted/40 hover:text-red-400"><iconify-icon icon="lucide:trash-2" width="14"></iconify-icon></button></div>`); }
+async function saveStory(e) { e.preventDefault(); const paras = [...document.querySelectorAll('[data-sp]')].map(t=>t.value).filter(v=>v); const statsArr = [...document.querySelectorAll('[data-sv]')].map((v,i) => ({ value: v.value, label: document.querySelector(`[data-sl="${i}"]`)?.value || '' })); const data = { image: getImgVal('story_img'), imageQuote: gv('f_st_iq'), heading: [gv('f_st_h1'), gv('f_st_h2')], headingAccent: gv('f_st_h2'), paragraphs: paras, stats: statsArr }; await saveSection('story', data); tempFiles = {}; toast('Story saved','success'); }
+
+function renderCollectionsAdmin(m) {
+  const cols = [...(S.collections||[])].sort((a,b)=>(a.sort_order||0)-(b.sort_order||0));
+  m.innerHTML = `<div class="flex items-center justify-between mb-8"><div><h2 class="font-serif text-2xl text-brand-text">Collections</h2><p class="text-xs text-brand-muted mt-1">${cols.length} collections</p></div><button onclick="openCollectionForm()" class="admin-btn admin-btn-primary flex items-center gap-2"><iconify-icon icon="lucide:plus" width="14"></iconify-icon> Add New</button></div>
+  <div class="border border-brand-border overflow-hidden rounded-lg"><table class="w-full"><thead><tr class="border-b border-brand-border bg-brand-bg/50"><th class="text-left text-[10px] tracking-widest uppercase text-brand-muted px-4 py-3">Image</th><th class="text-left text-[10px] tracking-widest uppercase text-brand-muted px-4 py-3">Title</th><th class="text-left text-[10px] tracking-widest uppercase text-brand-muted px-4 py-3 hidden md:table-cell">Pieces</th><th class="text-left text-[10px] tracking-widest uppercase text-brand-muted px-4 py-3 hidden md:table-cell">Type</th><th class="text-right text-[10px] tracking-widest uppercase text-brand-muted px-4 py-3">Actions</th></tr></thead><tbody>${cols.map(c=>`<tr class="border-b border-brand-border/50 hover:bg-brand-accent/3 transition-colors"><td class="px-4 py-3"><div class="w-12 h-16 overflow-hidden border border-brand-border rounded"><img src="${c.image_url}" alt="" class="w-full h-full object-cover"></div></td><td class="px-4 py-3"><p class="text-sm text-brand-text">${c.title}</p><p class="text-[10px] text-brand-muted mt-0.5">${c.subtitle||c.year}</p></td><td class="px-4 py-3 text-sm text-brand-muted hidden md:table-cell">${c.pieces_count}</td><td class="px-4 py-3 hidden md:table-cell">${c.is_limited?'<span class="px-2 py-0.5 bg-brand-accent/15 text-brand-accent text-[9px] tracking-widest uppercase">Limited</span>':'<span class="text-xs text-brand-muted/50">Standard</span>'}</td><td class="px-4 py-3 text-right"><div class="flex items-center justify-end gap-2"><button onclick="openCollectionForm(${c.id})" class="w-8 h-8 flex items-center justify-center text-brand-muted hover:text-brand-accent transition-colors"><iconify-icon icon="lucide:pencil" width="14"></iconify-icon></button><button onclick="confirmDeleteCol(${c.id},'${c.title.replace(/'/g,"\\'")}')" class="w-8 h-8 flex items-center justify-center text-brand-muted hover:text-red-400 transition-colors"><iconify-icon icon="lucide:trash-2" width="14"></iconify-icon></button></div></td></tr>`).join('')}${cols.length===0?'<tr><td colspan="5" class="px-4 py-12 text-center text-sm text-brand-muted/50">No collections</td></tr>':''}</tbody></table></div>`;
+}
+
+function openCollectionForm(id=null) {
+  const c = id ? (S.collections||[]).find(x=>x.id===id) : null;
+  const isE = !!c;
+  closeAdminPanel();
+  openModal(`<div class="p-8 md:p-10"><div class="flex items-center justify-between mb-8"><div><h3 class="font-serif text-2xl text-brand-text">${isE?'Edit':'New'} Collection</h3></div><button onclick="closeModal();openAdminPanel()" class="text-brand-muted hover:text-brand-accent transition-colors"><iconify-icon icon="lucide:x" width="20"></iconify-icon></button></div>
+  <form onsubmit="saveColForm(event,${id||'null'})">
+    <div class="grid md:grid-cols-2 gap-6">
+      <div><div class="field-group"><label class="field-label">Main Image</label>${imgField('col_img',c?.image_url,'collections')}</div></div>
+      <div class="space-y-4">
+        <div class="field-group"><label class="field-label">Title *</label><input class="admin-input" id="f_col_title" value="${c?.title||''}" required></div>
+        <div class="grid grid-cols-2 gap-4"><div class="field-group"><label class="field-label">Subtitle</label><input class="admin-input" id="f_col_sub" value="${c?.subtitle||''}"></div><div class="field-group"><label class="field-label">Year</label><input class="admin-input" id="f_col_year" value="${c?.year||'2024'}"></div></div>
+        <div class="grid grid-cols-2 gap-4"><div class="field-group"><label class="field-label">Pieces</label><input type="number" class="admin-input" id="f_col_pieces" value="${c?.pieces_count||0}" min="0"></div><div class="field-group"><label class="field-label">Sort Order</label><input type="number" class="admin-input" id="f_col_sort" value="${c?.sort_order||0}" min="0"></div></div>
+        <div class="flex items-center gap-3 pt-2"><label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" id="f_col_lim" class="sr-only peer" ${c?.is_limited?'checked':''}><div class="w-9 h-5 bg-brand-bg border border-brand-border rounded-full peer peer-checked:bg-brand-accent/30 peer-checked:border-brand-accent/50 transition-all after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:bg-brand-muted after:rounded-full after:h-3.5 after:w-3.5 after:transition-all peer-checked:after:translate-x-full peer-checked:after:bg-brand-accent"></div></label><span class="text-xs text-brand-muted">Limited Edition</span></div>
+      </div>
+    </div>
+    <div class="field-group mt-4"><label class="field-label">Short Description *</label><textarea class="admin-input" id="f_col_desc" rows="3" required>${c?.description||''}</textarea></div>
+    <div class="field-group"><label class="field-label">Full Description</label><textarea class="admin-input" id="f_col_ldesc" rows="4">${c?.long_description||''}</textarea></div>
+    <div class="grid md:grid-cols-2 gap-4"><div class="field-group"><label class="field-label">Materials</label><input class="admin-input" id="f_col_mat" value="${c?.materials||''}"></div><div class="field-group"><label class="field-label">Lead Time</label><input class="admin-input" id="f_col_lt" value="${c?.lead_time||''}"></div></div>
+    <div class="field-group"><label class="field-label">Gallery URLs (one per line)</label><textarea class="admin-input" id="f_col_gal" rows="3">${(c?.gallery||[]).join('\n')}</textarea></div>
+    <div class="flex items-center justify-between mt-8 pt-6 border-t border-brand-border">
+      <button type="button" onclick="closeModal();openAdminPanel()" class="admin-btn admin-btn-outline">← Back</button>
+      <div class="flex gap-3"><button type="button" onclick="closeModal()" class="admin-btn admin-btn-outline">Cancel</button><button type="submit" id="colSaveBtn" class="admin-btn admin-btn-primary"><span id="colSaveTxt">${isE?'Update':'Create'}</span></button></div>
+    </div>
+  </form></div>`, 'max-w-4xl');
+}
+
+async function saveColForm(e, id) {
+  e.preventDefault(); const btn = document.getElementById('colSaveBtn'); btn.disabled = true; document.getElementById('colSaveTxt').innerHTML = '<span class="spinner" style="width:14px;height:14px;border-width:2px"></span>';
+  const data = { title: gv('f_col_title'), subtitle: gv('f_col_sub'), year: gv('f_col_year'), pieces_count: +gv('f_col_pieces')||0, sort_order: +gv('f_col_sort')||0, is_limited: document.getElementById('f_col_lim').checked?1:0, description: gv('f_col_desc'), long_description: gv('f_col_ldesc'), materials: gv('f_col_mat'), lead_time: gv('f_col_lt'), gallery: gv('f_col_gal').split('\n').map(u=>u.trim()).filter(u=>u), image_url: getImgVal('col_img') };
+  if (!data.image_url) data.image_url = `https://picsum.photos/seed/${data.title.replace(/\s/g,'-').toLowerCase()}/800/1060.jpg`;
+  if (!useLocal) {
+    try { data.id = id; const r = await api(id?'update_collection':'create_collection', data, 'POST'); if (r.success) { const cols = S.collections||[]; if (id) { const i = cols.findIndex(c=>c.id===id); if(i>=0)cols[i]={...cols[i],...r.data}; } else cols.push(r.data); S.collections = cols; tempFiles={}; closeModal(); renderSite(); openAdminPanel(); toast('Collection saved','success'); return; } } catch {}
+  }
+  const cols = S.collections||[];
+  if (id) { const i=cols.findIndex(c=>c.id===id); if(i>=0)cols[i]={...cols[i],...data}; } else { data.id=cols.length?Math.max(...cols.map(c=>c.id))+1:1; cols.push(data); }
+  S.collections=cols; await saveSection('collections',cols); tempFiles={}; closeModal(); renderSite(); openAdminPanel(); toast('Collection saved','success');
+}
+
+function confirmDeleteCol(id, title) {
+  openModal(`<div class="p-8 max-w-sm mx-auto text-center"><div class="w-14 h-14 rounded-full border border-red-400/30 flex items-center justify-center mx-auto mb-5"><iconify-icon icon="lucide:alert-triangle" width="24" class="text-red-400"></iconify-icon></div><h3 class="font-serif text-xl text-brand-text mb-2">Delete Collection</h3><p class="text-sm font-light text-brand-muted mb-6">Delete "<strong class="text-brand-text">${title}</strong>"?</p><div class="flex gap-3 justify-center"><button onclick="closeModal();openAdminPanel()" class="admin-btn admin-btn-outline">Cancel</button><button onclick="deleteCol(${id})" class="admin-btn admin-btn-danger">Delete</button></div></div>`, 'max-w-sm');
+}
+async function deleteCol(id) {
+  if (!useLocal) { try { await api('delete_collection',{id},'POST'); } catch {} }
+  S.collections = (S.collections||[]).filter(c=>c.id!==id);
+  await saveSection('collections', S.collections); closeModal(); renderSite(); openAdminPanel(); toast('Deleted','success');
+}
+
+function renderCraftEditor(m) {
+  const steps = S.craft?.steps || [];
+  m.innerHTML = `<h2 class="font-serif text-2xl text-brand-text mb-2">Craftsmanship Steps</h2><p class="text-xs text-brand-muted mb-8">Edit the 4 process steps</p>
+  <form onsubmit="saveCraft(event)"><div class="space-y-4">${steps.map((s,i) => `<div class="list-item"><div class="flex items-center gap-3 mb-3"><span class="font-serif text-2xl text-brand-accent/30">${s.num}</span><input class="admin-input flex-1" value="${s.title}" data-ct="${i}" placeholder="Step title"><input class="admin-input w-48" value="${s.icon}" data-ci="${i}" placeholder="Icon name"><button type="button" onclick="this.closest('.list-item').remove()" class="text-brand-muted/40 hover:text-red-400"><iconify-icon icon="lucide:trash-2" width="14"></iconify-icon></button></div><textarea class="admin-input" data-cd="${i}" rows="2" placeholder="Description">${s.desc}</textarea></div>`).join('')}</div>
+  <button type="submit" class="admin-btn admin-btn-primary mt-4">Save Craftsmanship</button></form>`;
+}
+async function saveCraft(e) { e.preventDefault(); const steps = [...document.querySelectorAll('[data-ct]')].map((t,i) => ({ num: String(i+1).padStart(2,'0'), title: t.value, icon: document.querySelector(`[data-ci="${i}"]`)?.value||'lucide:star', desc: document.querySelector(`[data-cd="${i}"]`)?.value||'' })); await saveSection('craft', { steps }); toast('Craftsmanship saved','success'); }
+
+function renderQuoteEditor(m) {
+  const q = S.quote || {};
+  m.innerHTML = `<h2 class="font-serif text-2xl text-brand-text mb-2">Quote Section</h2><p class="text-xs text-brand-muted mb-8">The full-width quote break</p>
+  <form onsubmit="saveQuote(event)">
+    <div class="field-group"><label class="field-label">Background Image</label>${imgField('quote_img', q.image, 'quote')}</div>
+    <div class="field-group"><label class="field-label">Quote Text</label><input class="admin-input" id="f_qt" value="${q.text||''}"></div>
+    <div class="field-group"><label class="field-label">Attribution</label><input class="admin-input" id="f_qa" value="${q.attribution||''}"></div>
+    <button type="submit" class="admin-btn admin-btn-primary mt-4">Save Quote</button>
+  </form>`;
+}
+async function saveQuote(e) { e.preventDefault(); await saveSection('quote', { image: getImgVal('quote_img'), text: gv('f_qt'), attribution: gv('f_qa') }); tempFiles={}; toast('Quote saved','success'); }
+
+function renderGalleryEditor(m) {
+  const items = S.gallery?.items || [];
+  m.innerHTML = `<h2 class="font-serif text-2xl text-brand-text mb-2">Gallery Grid</h2><p class="text-xs text-brand-muted mb-8">Bento grid layout — 4 items</p>
+  <form onsubmit="saveGallery(event)"><div class="space-y-4">${items.map((g,i) => `<div class="list-item"><div class="flex items-center gap-3 mb-3"><span class="text-xs text-brand-muted/40 w-16">${g.span}</span><input class="admin-input w-32" value="${g.label}" data-gl="${i}" placeholder="Label"><input class="admin-input flex-1" value="${g.title}" data-gt="${i}" placeholder="Title"><button type="button" onclick="this.closest('.list-item').remove()" class="text-brand-muted/40 hover:text-red-400"><iconify-icon icon="lucide:trash-2" width="14"></iconify-icon></button></div><div class="flex gap-3"><div class="flex-1">${imgField(`gal_${i}`, g.image, 'gallery')}</div></div></div>`).join('')}</div>
+  <button type="submit" class="admin-btn admin-btn-primary mt-4">Save Gallery</button></form>`;
+}
+async function saveGallery(e) { e.preventDefault(); const items = [...document.querySelectorAll('[data-gl]')].map((l,i) => ({ label: l.value, title: document.querySelector(`[data-gt="${i}"]`)?.value||'', image: getImgVal(`gal_${i}`), span: ['col-span-2 row-span-2','col-span-1','col-span-1','col-span-2'][i]||'col-span-1' })); await saveSection('gallery', { items }); tempFiles={}; toast('Gallery saved','success'); }
+
+function renderTestimonialsEditor(m) {
+  const items = S.testimonials?.items || [];
+  m.innerHTML = `<div class="flex items-center justify-between mb-8"><div><h2 class="font-serif text-2xl text-brand-text">Testimonials</h2><p class="text-xs text-brand-muted mt-1">${items.length} reviews</p></div><button onclick="addTestimonial()" class="admin-btn admin-btn-outline text-brand-accent"><iconify-icon icon="lucide:plus" width="14"></iconify-icon> Add</button></div>
+  <form onsubmit="saveTestimonials(event)"><div id="testList" class="space-y-4">${items.map((t,i) => `<div class="list-item"><div class="flex items-start gap-4"><div class="w-16 h-16 overflow-hidden border border-brand-border rounded-full flex-shrink-0"><img src="${t.photo}" alt="" class="w-full h-full object-cover"></div><div class="flex-1 space-y-3"><div class="grid grid-cols-2 gap-3"><input class="admin-input" value="${t.name}" data-tn="${i}" placeholder="Name"><input class="admin-input" value="${t.role}" data-tr="${i}" placeholder="Role"></div><textarea class="admin-input" data-tq="${i}" rows="2" placeholder="Quote">${t.quote}</textarea><div class="field-group mb-0"><label class="field-label">Photo URL</label><input class="admin-input" value="${t.photo}" data-tp="${i}" placeholder="Photo URL"></div></div><button type="button" onclick="this.closest('.list-item').remove()" class="text-brand-muted/40 hover:text-red-400 mt-2"><iconify-icon icon="lucide:trash-2" width="14"></iconify-icon></button></div></div>`).join('')}</div><button type="submit" class="admin-btn admin-btn-primary mt-4">Save Testimonials</button></form>`;
+}
+function addTestimonial() { const c = document.getElementById('testList'); const n = c.children.length; c.insertAdjacentHTML('beforeend', `<div class="list-item"><div class="flex items-start gap-4"><div class="w-16 h-16 bg-brand-bg border border-brand-border rounded-full flex-shrink-0"></div><div class="flex-1 space-y-3"><div class="grid grid-cols-2 gap-3"><input class="admin-input" data-tn="${n}" placeholder="Name"><input class="admin-input" data-tr="${n}" placeholder="Role"></div><textarea class="admin-input" data-tq="${n}" rows="2" placeholder="Quote"></textarea><div class="field-group mb-0"><label class="field-label">Photo URL</label><input class="admin-input" data-tp="${n}" placeholder="Photo URL"></div></div><button type="button" onclick="this.closest('.list-item').remove()" class="text-brand-muted/40 hover:text-red-400 mt-2"><iconify-icon icon="lucide:trash-2" width="14"></iconify-icon></button></div></div>`); }
+async function saveTestimonials(e) { e.preventDefault(); const items = [...document.querySelectorAll('[data-tn]')].map((n,i) => ({ name: n.value, role: document.querySelector(`[data-tr="${i}"]`)?.value||'', quote: document.querySelector(`[data-tq="${i}"]`)?.value||'', photo: document.querySelector(`[data-tp="${i}"]`)?.value||'' })); await saveSection('testimonials', { items }); toast('Testimonials saved','success'); }
+
+function renderContactEditor(m) {
+  const co = S.contact || {};
+  m.innerHTML = `<h2 class="font-serif text-2xl text-brand-text mb-2">Contact Section</h2><p class="text-xs text-brand-muted mb-8">Newsletter & contact info</p>
+  <form onsubmit="saveContact(event)">
+    <div class="grid md:grid-cols-2 gap-4"><div class="field-group"><label class="field-label">Heading</label><input class="admin-input" id="f_co_h" value="${co.heading||''}"></div><div class="field-group"><label class="field-label">Heading Accent</label><input class="admin-input" id="f_co_ha" value="${co.headingAccent||''}"></div></div>
+    <div class="field-group"><label class="field-label">Description</label><textarea class="admin-input" id="f_co_d" rows="3">${co.description||''}</textarea></div>
+    <div class="grid md:grid-cols-2 gap-4"><div class="field-group"><label class="field-label">Button Text</label><input class="admin-input" id="f_co_bt" value="${co.buttonText||''}"></div><div class="field-group"><label class="field-label">Input Placeholder</label><input class="admin-input" id="f_co_ph" value="${co.placeholder||''}"></div></div>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="field-group"><label class="field-label">Address (newline separated)</label><textarea class="admin-input" id="f_co_addr" rows="2">${co.address||''}</textarea></div>
+      <div class="field-group"><label class="field-label">Phone (newline separated)</label><textarea class="admin-input" id="f_co_ph2" rows="2">${co.phone||''}</textarea></div>
+      <div class="field-group"><label class="field
